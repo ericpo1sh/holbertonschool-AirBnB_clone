@@ -1,16 +1,22 @@
 #!/usr/bin/python3
-""" Unittest Module for Base_model """
+""" This Module contains UnitTests for the BaseModel Class """
+import unittest
 from models.base_model import BaseModel
 
 
-my_model = BaseModel()
-my_model.name = "My First Model"
-my_model.my_number = 89
-print(my_model)
-my_model.save()
-print(my_model)
-my_model_json = my_model.to_dict()
-print(my_model_json)
-print("JSON of my_model:")
-for key in my_model_json.keys():
-    print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
+class TestBaseModelInit(unittest.TestCase):
+    """ This Test Class tests the BaseModel constructor """
+
+    def test_base_model_constructor(self):
+        with self.assertRaises(TypeError):
+            BaseModel(1)
+
+    def test_save_method(self):
+        with self.assertRaises(TypeError):
+            b1 = BaseModel()
+            b1.save(1)
+
+    def test_to_dict_method(self):
+        with self.assertRaises(TypeError):
+            b1 = BaseModel()
+            b1.to_dict(1)
