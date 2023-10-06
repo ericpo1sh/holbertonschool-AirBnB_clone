@@ -6,11 +6,21 @@ from uuid import uuid4
 
 class BaseModel:
     """ definitions for BaseModel class """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ instantiation of BaseModel object """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if kwargs and len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key in ["created_at", "updated_at"]:
+                    self.__dict__[key] = datetime.strptime(
+                        value,
+                        "%Y-%m-%dT%H:%M:%S.%f"
+                    )
+                elif key != '__class__':
+                    self.__dict__[key] = value
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """ string representation of BaseModel object """

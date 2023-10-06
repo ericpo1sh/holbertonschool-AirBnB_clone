@@ -11,6 +11,7 @@ class TestBaseModel_init(unittest.TestCase):
     def setUp(self):
         self.mod1 = BaseModel()
         self.mod2 = BaseModel()
+        self.mod3 = BaseModel(**self.mod1.to_dict())
 
     def tearDown(self):
         del self.mod1
@@ -51,6 +52,20 @@ class TestBaseModel_init(unittest.TestCase):
         self.assertEqual(self.mod1.created_at, self.mod1.updated_at)
         self.assertEqual(self.mod2.created_at, self.mod2.updated_at)
         self.assertNotEqual(self.mod1.updated_at, self.mod2.updated_at)
+
+    def test_init_kwargs_direct(self):
+        kwargs_model = BaseModel(id=2147483647)
+        self.assertEqual(kwargs_model.id, 2147483647)
+
+    def test_init_kwargs_from_dict(self):
+        self.assertEqual(self.mod3.id, self.mod1.id)
+        self.assertEqual(self.mod3.created_at, self.mod1.created_at)
+        self.assertEqual(self.mod3.updated_at, self.mod1.updated_at)
+        self.assertEqual(self.mod3.__class__, self.mod3.__class__)
+
+    def test_init_args(self):
+        args_model = BaseModel([2, 4, 8, 16])
+        self.assertNotIn('[2, 4, 8, 16]', args_model.__dict__.items())
 
 
 class TestBaseModel_str(unittest.TestCase):
