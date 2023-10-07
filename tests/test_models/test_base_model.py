@@ -1,21 +1,31 @@
 #!/usr/bin/python3
 """ unittest module containing tests for BaseModel class """
+import os
 import unittest
 import pycodestyle
+from models import storage
 from genericpath import exists
 from models.base_model import BaseModel
 
 
 class TestBaseModel_init(unittest.TestCase):
     """ BaseModel __init__ method tests """
+    @classmethod
     def setUp(self):
         self.mod1 = BaseModel()
         self.mod2 = BaseModel()
         self.mod3 = BaseModel(**self.mod1.to_dict())
+        storage.save()
 
+    @classmethod
     def tearDown(self):
         del self.mod1
         del self.mod2
+        del self.mod3
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
 
     def test_doc_string(self):
         self.assertTrue(len(BaseModel.__doc__) > 0)
@@ -73,9 +83,11 @@ class TestBaseModel_init(unittest.TestCase):
 
 class TestBaseModel_str(unittest.TestCase):
     """ BaseModel __str__ method tests """
+    @classmethod
     def setUp(self):
         self.mod1 = BaseModel()
 
+    @classmethod
     def tearDown(self):
         del self.mod1
 
@@ -100,10 +112,12 @@ class TestBaseModel_str(unittest.TestCase):
 
 class TestBaseModel_save(unittest.TestCase):
     """ BaseModel save method tests """
+    @classmethod
     def setUp(self):
         self.mod1 = BaseModel()
         self.mod1.save()
 
+    @classmethod
     def tearDown(self):
         del self.mod1
 
@@ -118,10 +132,12 @@ class TestBaseModel_save(unittest.TestCase):
 
 class TestBaseModel_to_dict(unittest.TestCase):
     """ BaseModel to_dict method tests """
+    @classmethod
     def setUp(self):
         self.mod1 = BaseModel()
         self.mod1_dict = self.mod1.to_dict()
 
+    @classmethod
     def tearDown(self):
         del self.mod1
 

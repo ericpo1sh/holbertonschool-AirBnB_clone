@@ -31,6 +31,8 @@ class TestFileStorage_class(unittest.TestCase):
             FileStorage(1)
 
     def test_class_attributes_private(self):
+        self.assertTrue(type(storage._FileStorage__file_path) is str)
+        self.assertTrue(type(storage._FileStorage__objects) is dict)
         with self.assertRaises(AttributeError):
             print(storage.__objects)
             print(storage.__file_path)
@@ -41,10 +43,12 @@ class TestFileStorage_class(unittest.TestCase):
 
 class TestFileStorage_all(unittest.TestCase):
     """ tests FileStorage all method """
+    @classmethod
     def setUp(self):
         self.obj = BaseModel()
         storage.save()
 
+    @classmethod
     def tearDown(self):
         del self.obj
         try:
@@ -68,10 +72,12 @@ class TestFileStorage_all(unittest.TestCase):
 
 class TestFileStorage_new(unittest.TestCase):
     """ tests FileStorage new method """
+    @classmethod
     def setUp(self):
         self.obj = BaseModel()
         storage.save()
 
+    @classmethod
     def tearDown(self):
         del self.obj
         try:
@@ -99,10 +105,12 @@ class TestFileStorage_new(unittest.TestCase):
 
 class TestFileStorage_save(unittest.TestCase):
     """ tests FileStorage save method """
+    @classmethod
     def setUp(self):
         self.obj = BaseModel()
         storage.save()
 
+    @classmethod
     def tearDown(self):
         del self.obj
         try:
@@ -128,24 +136,20 @@ class TestFileStorage_save(unittest.TestCase):
 
 class TestFileStorage_reload(unittest.TestCase):
     """ tests FileStorage reload method """
-    def setUp(self):
+    def test_reload(self):
         self.obj = BaseModel()
         storage.save()
-
-    def tearDown(self):
-        del self.obj
-        try:
-            os.remove("file.json")
-        except IOError:
-            pass
-
-    def test_reload(self):
         storage.reload()
         self.assertIn(
             f'{self.obj.__class__.__name__}.{self.obj.id}',
             storage._FileStorage__objects
         )
         self.assertTrue(len(storage.all()) > 0)
+        del self.obj
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
 
     def test_reload_with_argument(self):
         with self.assertRaises(TypeError):
