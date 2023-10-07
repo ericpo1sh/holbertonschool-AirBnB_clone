@@ -61,7 +61,7 @@ class TestBaseModel_init(unittest.TestCase):
         self.assertEqual(self.mod3.id, self.mod1.id)
         self.assertEqual(self.mod3.created_at, self.mod1.created_at)
         self.assertEqual(self.mod3.updated_at, self.mod1.updated_at)
-        self.assertEqual(self.mod3.__class__, self.mod3.__class__)
+        self.assertEqual(self.mod3.__class__, self.mod1.__class__)
 
     def test_init_args(self):
         args_model = BaseModel([2, 4, 8, 16])
