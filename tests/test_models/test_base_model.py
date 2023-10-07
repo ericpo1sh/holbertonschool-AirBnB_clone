@@ -67,6 +67,9 @@ class TestBaseModel_init(unittest.TestCase):
         args_model = BaseModel([2, 4, 8, 16])
         self.assertNotIn('[2, 4, 8, 16]', args_model.__dict__.items())
 
+    def test_type(self):
+        self.assertTrue(type(self.mod1) is BaseModel)
+
 
 class TestBaseModel_str(unittest.TestCase):
     """ BaseModel __str__ method tests """
