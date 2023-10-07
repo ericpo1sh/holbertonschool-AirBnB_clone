@@ -47,7 +47,6 @@ class TestFileStorage_all(unittest.TestCase):
 
     def tearDown(self):
         del self.obj
-        storage.save()
         try:
             os.remove("file.json")
         except IOError:
@@ -75,7 +74,6 @@ class TestFileStorage_new(unittest.TestCase):
 
     def tearDown(self):
         del self.obj
-        storage.save()
         try:
             os.remove("file.json")
         except IOError:
@@ -107,7 +105,6 @@ class TestFileStorage_save(unittest.TestCase):
 
     def tearDown(self):
         del self.obj
-        storage.save()
         try:
             os.remove("file.json")
         except IOError:
@@ -127,6 +124,32 @@ class TestFileStorage_save(unittest.TestCase):
     def test_save_with_argument(self):
         with self.assertRaises(TypeError):
             storage.save(1)
+
+
+class TestFileStorage_reload(unittest.TestCase):
+    """ tests FileStorage reload method """
+    def setUp(self):
+        self.obj = BaseModel()
+        storage.save()
+
+    def tearDown(self):
+        del self.obj
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+
+    def test_reload(self):
+        storage.reload()
+        self.assertIn(
+            f'{self.obj.__class__.__name__}.{self.obj.id}',
+            storage._FileStorage__objects
+        )
+        self.assertTrue(len(storage.all()) > 0)
+
+    def test_reload_with_argument(self):
+        with self.assertRaises(TypeError):
+            storage.reload(1)
 
 
 if __name__ == "__main__":
