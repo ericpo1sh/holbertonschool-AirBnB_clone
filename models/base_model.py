@@ -30,8 +30,8 @@ class BaseModel:
 
     def save(self):
         """ updates updated_at attribute with current datetime """
-        models.storage.save()
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """ returns __dict__ keys & values of BaseModel instance """
