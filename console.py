@@ -3,11 +3,11 @@
 import cmd
 from models import storage
 from models.user import User
-from models.user import State
-from models.user import City
-from models.user import Place
-from models.user import Amenity
-from models.user import Review
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 from models.base_model import BaseModel
 
 
