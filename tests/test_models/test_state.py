@@ -11,6 +11,7 @@ class TestState_class(unittest.TestCase):
     """ State formatting & initialization tests """
     @classmethod
     def setUp(self):
+        """ preparation method to be performed before each test """
         self.state1 = State()
         self.state2 = State()
         self.state3 = State(**self.state1.to_dict())
@@ -18,6 +19,7 @@ class TestState_class(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
+        """ cleanup method to be performed following each test """
         del self.state1
         del self.state2
         del self.state3
@@ -27,9 +29,11 @@ class TestState_class(unittest.TestCase):
             pass
 
     def test_doc_string(self):
+        """ tests module docstring """
         self.assertTrue(len(State.__doc__) > 0)
 
     def test_pycodestyle(self):
+        """ tests module pycodestyle formatting standard compliance """
         style = pycodestyle.StyleGuide(quiet=True)
         self.assertEqual(
             style.check_files(['models/state.py']).total_errors,
@@ -38,6 +42,7 @@ class TestState_class(unittest.TestCase):
         )
 
     def test_class_attribute_initialization(self):
+        """ verifies attributes initialized with correct value & type """
         self.assertTrue(type(self.state1.name) is str)
         self.assertTrue(type(self.state2.name) is str)
         self.assertTrue(type(self.state3.name) is str)

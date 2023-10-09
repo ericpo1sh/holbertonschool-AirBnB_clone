@@ -11,6 +11,7 @@ class TestPlace_class(unittest.TestCase):
     """ Place formatting & initialization tests """
     @classmethod
     def setUp(self):
+        """ preparation method to be performed before each test """
         self.place1 = Place()
         self.place2 = Place()
         self.place3 = Place(**self.place1.to_dict())
@@ -18,6 +19,7 @@ class TestPlace_class(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
+        """ cleanup method to be performed following each test """
         del self.place1
         del self.place2
         del self.place3
@@ -27,9 +29,11 @@ class TestPlace_class(unittest.TestCase):
             pass
 
     def test_doc_string(self):
+        """ tests module docstring """
         self.assertTrue(len(Place.__doc__) > 0)
 
     def test_pycodestyle(self):
+        """ tests module pycodestyle formatting standard compliance """
         style = pycodestyle.StyleGuide(quiet=True)
         self.assertEqual(
             style.check_files(['models/place.py']).total_errors,
@@ -38,6 +42,7 @@ class TestPlace_class(unittest.TestCase):
         )
 
     def test_class_attribute_initialization(self):
+        """ verifies attributes initialized with correct value & type """
         self.assertTrue(type(self.place1.user_id) is str)
         self.assertTrue(type(self.place1.name) is str)
         self.assertTrue(type(self.place1.description) is str)

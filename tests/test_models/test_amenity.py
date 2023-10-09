@@ -11,6 +11,7 @@ class TestAmenity_class(unittest.TestCase):
     """ Amenity formatting & initialization tests """
     @classmethod
     def setUp(self):
+        """ preparation method to be performed before each test """
         self.amenity1 = Amenity()
         self.amenity2 = Amenity()
         self.amenity3 = Amenity(**self.amenity1.to_dict())
@@ -18,6 +19,7 @@ class TestAmenity_class(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
+        """ cleanup method to be performed following each test """
         del self.amenity1
         del self.amenity2
         del self.amenity3
@@ -27,9 +29,11 @@ class TestAmenity_class(unittest.TestCase):
             pass
 
     def test_doc_string(self):
+        """ tests module docstring """
         self.assertTrue(len(Amenity.__doc__) > 0)
 
     def test_pycodestyle(self):
+        """ tests module pycodestyle formatting standard compliance """
         style = pycodestyle.StyleGuide(quiet=True)
         self.assertEqual(
             style.check_files(['models/amenity.py']).total_errors,
@@ -38,6 +42,7 @@ class TestAmenity_class(unittest.TestCase):
         )
 
     def test_class_attribute_initialization(self):
+        """ verifies attributes initialized with correct value & type """
         self.assertTrue(type(self.amenity1.name) is str)
         self.assertTrue(type(self.amenity2.name) is str)
         self.assertTrue(type(self.amenity3.name) is str)
