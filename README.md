@@ -1,6 +1,6 @@
 # AirBnB Console :house:
 ### Description :pen:
-#### The AirBnB Console is a command-line interpreter created for the purpose of handling objects similar to those found on Airbnb. It offers an easy-to-use interface for performing actions like creating, viewing, modifying, and removing instances of different classes like BaseModel, User, State, City, Amenity, Place, and Review. The Console involves the development of a console-driven application meant for the management of objects like the ones found on Airbnb. The Console includes a range of capabilities, including instance creation, information presentation, attribute modification, and instance removal. All the data is serialized and deserialized to and from JSON files to ensure effective data management.
+ The AirBnB Console is a command-line interpreter created for the purpose of handling objects similar to those found on Airbnb. It offers an easy-to-use interface for performing actions like creating, viewing, modifying, and removing instances of different classes like BaseModel, User, State, City, Amenity, Place, and Review. The Console involves the development of a console-driven application meant for the management of objects like the ones found on Airbnb. The Console includes a range of capabilities, including instance creation, information presentation, attribute modification, and instance removal. All the data is serialized and deserialized to and from JSON files to ensure effective data management.
 
 #
 
@@ -14,12 +14,18 @@
 #
 
 ### Installation! :file_folder:
-#### Clone the repository; example below:
-`root@user$ git clone https://github.com/ericpo1sh/holbertonschool-AirBnB_clone.git`
-#### Then navigate to the projects root directory and run console.py; example below:
-`holbertonschool-AirBnB_clone$ ./console.py`
-#### The application should be running and the following promp should display:
-`(hbnb) `
+**Clone the repository; example below:**
+```
+root@user$ git clone https://github.com/ericpo1sh/holbertonschool-AirBnB_clone.git
+```
+**Then navigate to the projects root directory and run console.py; example below:**
+```
+holbertonschool-AirBnB_clone$ ./console.py
+```
+**The application should be running and the following promp should display:**
+```
+(hbnb)
+```
 #
 
 #### Command Usage, Syntax, Descriptions :blue_book:
@@ -47,20 +53,20 @@
 #
 
 ### Examples! :bulb:
-#### In this example, we create a new instance of BaseModel, a new ID is returned.
+**In this example, we create a new instance of BaseModel, a new ID is returned.**
 
 ```
 (hbnb) create BaseModel
 ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 ```
-#### Now lets use the show command on this newly created instance.
+**Now lets use the show command on this newly created instance.**
 ```
 (hbnb) show BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 [BaseModel] (ab763e7e-4bc8-4380-bb07-0a07a8f1a56d) {'id': 'ab763e7e-4bc8-4380-bb07-0a07a8f1a56d',
 'created_at': datetime.datetime(2023, 10, 9, 10, 38, 1, 900183),
 'updated_at': datetime.datetime(2023, 10, 9, 10, 38, 1, 900224)}
 ```
-#### Now lets update the instance and add a new object to it.
+**Now lets update the instance and add a new object to it.**
 ```
 (hbnb) update BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d Name "Eric"
 (hbnb) show BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
@@ -69,7 +75,7 @@ ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 'updated_at': datetime.datetime(2023, 10, 9, 11, 3, 0, 44871),
 'Name': 'Eric'}
 ```
-#### Now lets use the all command to display any instance of any Class!
+**Now lets use the all command to display any instance of any Class!**
 ```
 (hbnb) create BaseModel
 a8259ae7-2ecb-4fb9-aafc-0e4244adf089
@@ -90,7 +96,7 @@ af95611c-9ab1-459d-809c-f371eac2a5ef
 (hbnb) 
 ```
 
-#### Now lets destroy the instance!
+**Now lets destroy the instance!**
 ```
 (hbnb) destroy BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 (hbnb) show BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
