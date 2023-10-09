@@ -2,8 +2,13 @@
 """ module contains console for command interpreter """
 import cmd
 from models import storage
-from models.base_model import BaseModel
 from models.user import User
+from models.user import State
+from models.user import City
+from models.user import Place
+from models.user import Amenity
+from models.user import Review
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -12,11 +17,11 @@ class HBNBCommand(cmd.Cmd):
     class_list = [
         "BaseModel",
         "User"
-        # "Amenity",
-        # "City",
-        # "Place",
-        # "Review",
-        # "State",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review",
     ]
 
     def emptyline(self):
