@@ -35,8 +35,17 @@ class FileStorage:
         """ deserialization to __objects from saved JSON file, if exists """
         try:
             with open(self.__file_path, "r") as infile:
+                class_dict = {
+                    'BaseModel': BaseModel,
+                    'User': User,
+                    'State': State,
+                    'City': City,
+                    'Amenity': Amenity,
+                    'Place': Place,
+                    'Review': Review
+                }
                 obj_dict = json.load(infile)
                 for key, value in obj_dict.items():
-                    self.__objects[key] = eval(value['__class__'])(**value)
+                    self.new(class_dict[value['__class__']])(**value)
         except FileNotFoundError:
             pass

@@ -49,7 +49,16 @@ class HBNBCommand(cmd.Cmd):
                 print('** class doesn\'t exist **')
                 return
             else:
-                object = eval(class_name)()
+                class_dict = {
+                    'BaseModel': BaseModel,
+                    'User': User,
+                    'State': State,
+                    'City': City,
+                    'Amenity': Amenity,
+                    'Place': Place,
+                    'Review': Review
+                }
+                object = class_dict[class_name]()
                 object.save()
                 print(object.id)
 
