@@ -11,6 +11,7 @@ class TestUser_class(unittest.TestCase):
     """ User formatting & initialization tests """
     @classmethod
     def setUp(self):
+        """ preparation method to be performed before each test """
         self.usr1 = User()
         self.usr2 = User()
         self.usr3 = User(**self.usr1.to_dict())
@@ -18,6 +19,7 @@ class TestUser_class(unittest.TestCase):
 
     @classmethod
     def tearDown(self):
+        """ cleanup method to be performed following each test """
         del self.usr1
         del self.usr2
         del self.usr3
@@ -27,9 +29,11 @@ class TestUser_class(unittest.TestCase):
             pass
 
     def test_doc_string(self):
+        """ tests module docstring """
         self.assertTrue(len(User.__doc__) > 0)
 
     def test_pycodestyle(self):
+        """ tests module pycodestyle formatting standard compliance """
         style = pycodestyle.StyleGuide(quiet=True)
         self.assertEqual(
             style.check_files(['models/user.py']).total_errors,
@@ -38,6 +42,7 @@ class TestUser_class(unittest.TestCase):
         )
 
     def test_class_attribute_initialization(self):
+        """ verifies attributes initialized with correct value & type """
         self.assertTrue(type(self.usr1.email) is str)
         self.assertTrue(type(self.usr1.password) is str)
         self.assertTrue(type(self.usr1.first_name) is str)
