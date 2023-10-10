@@ -102,6 +102,8 @@ af95611c-9ab1-459d-809c-f371eac2a5ef
 (hbnb) show BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 ** no instance found **
 ```
+#
+![image](https://github.com/ericpo1sh/holbertonschool-AirBnB_clone/assets/126730794/e82771fe-bb0a-44b1-935c-99efbf0877d3)
 ## Authors/Contact info :phone: :mailbox:
 * **Eric Dzyk** **|** [Github](https://github.com/ericpo1sh) **|** [LinkedIn](https://linkedin.com/in/eric-dzyk-1b8976213) **|** [Email](mailto:ericpo1sh@gmail.com)  
 * **Sammy Ansari** **|** [Github](https://github.com/O-01) **|** [LinkedIn](https://linkedin.com/in/sam-ansari-579553287) **|** [Email](mailto:na.01goli@gmail.com)
