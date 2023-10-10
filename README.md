@@ -14,6 +14,8 @@
 #
 
 ### Installation! :file_folder:
+**REQUIREMENT: Make sure that you have a working terminal with [python3](https://realpython.com/installing-python/) or greater installed!**
+
 **Clone the repository; example below:**
 ```
 root@user$ git clone https://github.com/ericpo1sh/holbertonschool-AirBnB_clone.git
@@ -101,6 +103,17 @@ af95611c-9ab1-459d-809c-f371eac2a5ef
 (hbnb) destroy BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 (hbnb) show BaseModel ab763e7e-4bc8-4380-bb07-0a07a8f1a56d
 ** no instance found **
+```
+#
+# To Run Unittests, you can do the following! :test_tube:
+```
+root@user:~/AirBnB$ python3 -m unittest discover tests
+................................................
+----------------------------------------------------------------------
+Ran 48 tests in 0.232s
+
+OK
+root@user:~/AirBnB$
 ```
 #
 ![image](https://github.com/ericpo1sh/holbertonschool-AirBnB_clone/assets/126730794/e82771fe-bb0a-44b1-935c-99efbf0877d3)
